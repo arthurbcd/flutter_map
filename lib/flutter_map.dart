@@ -141,6 +141,8 @@ abstract class MapController {
 
   Stream<MapEvent> get mapEventStream;
 
+  LatLng? pointToLatLng(CustomPoint point);
+
   factory MapController() => MapControllerImpl();
 }
 

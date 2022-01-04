@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map_example/pages/map_inside_listview.dart';
 import 'package:flutter_map_example/pages/network_tile_provider.dart';
+import 'package:flutter_map_example/pages/point_to_latlng.dart';
 
 import './pages/animated_map_controller.dart';
 import './pages/circle.dart';
 import './pages/custom_crs/custom_crs.dart';
 import './pages/esri.dart';
 import './pages/home.dart';
+import './pages/interactive_test_page.dart';
 import './pages/live_location.dart';
 import './pages/many_markers.dart';
 import './pages/map_controller.dart';
@@ -28,7 +30,6 @@ import './pages/tile_builder_example.dart';
 import './pages/tile_loading_error_handle.dart';
 import './pages/widgets.dart';
 import './pages/wms_tile_layer.dart';
-import 'pages/interactive_test_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
         StatefulMarkersPage.route: (context) => StatefulMarkersPage(),
         MapInsideListViewPage.route: (context) => MapInsideListViewPage(),
         ResetTileLayerPage.route: (context) => ResetTileLayerPage(),
+        PointToLatLngPage.route: (context) => PointToLatLngPage(),
       },
     );
   }
