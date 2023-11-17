@@ -1,7 +1,10 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 import 'package:http/http.dart';
 import 'package:http/retry.dart';
+
 
 class NetworkImageWithRetry extends ImageProvider<NetworkImageWithRetry> {
   /// The URL from which the image will be fetched.
@@ -16,7 +19,8 @@ class NetworkImageWithRetry extends ImageProvider<NetworkImageWithRetry> {
   NetworkImageWithRetry(this.url, {this.scale = 1.0});
 
   @override
-  ImageStreamCompleter load(NetworkImageWithRetry key, DecoderCallback decode) {
+  ImageStreamCompleter load(NetworkImageWithRetry key,
+      Future<ui.Codec> Function(Uint8List buffer) decode) {
     return OneFrameImageStreamCompleter(_loadWithRetry(key, decode),
         informationCollector: () sync* {
       yield ErrorDescription('Image provider: $this');
@@ -30,7 +34,8 @@ class NetworkImageWithRetry extends ImageProvider<NetworkImageWithRetry> {
   }
 
   Future<ImageInfo> _loadWithRetry(
-      NetworkImageWithRetry key, DecoderCallback decode) async {
+      NetworkImageWithRetry key,
+      Future<ui.Codec> Function(Uint8List buffer) decode) async {
     assert(key == this);
 
     final uri = Uri.parse(url);
