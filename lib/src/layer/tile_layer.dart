@@ -1312,7 +1312,7 @@ class Tile implements Comparable<Tile> {
     if (evict) {
       try {
         // ignore: return_type_invalid_for_catch_error
-        // ignore: implicit_dynamic_parameter
+        // ignore: implicit_dynamic_parameter, body_might_complete_normally_catch_error
         imageProvider.evict().catchError((e) {
           debugPrint(e.toString());
         });
@@ -1476,5 +1476,5 @@ class Coords<T extends num> extends CustomPoint<T> {
   }
 
   @override
-  int get hashCode => hashValues(x.hashCode, y.hashCode, z.hashCode);
+  int get hashCode => Object.hash(x.hashCode, y.hashCode, z.hashCode);
 }

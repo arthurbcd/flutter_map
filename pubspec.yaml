@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   async: ^2.8.2
+  location:
   collection: ^1.15.0
   flutter:
     sdk: flutter
